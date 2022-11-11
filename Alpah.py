@@ -4,7 +4,7 @@ import getpass
 import warnings
 import os
 warnings.filterwarnings('ignore')
-print('֍֍֍֍֍      /| |     |^^^^^|     /| |     | ® ֍֍֍֍֍')
+print('֍֍֍֍֍      /| |     /^^^^^\     /| |     | ® ֍֍֍֍֍')
 print('֍֍֍֍֍     / | |     | ۝ ۝ |    / | |     |   ֍֍֍֍֍')
 print('֍֍֍֍֍    /__| |     |_____|   /__| |_____|   ֍֍֍֍֍')
 print('֍֍֍֍֍   /   | |     |        /   | |     |   ֍֍֍֍֍')
@@ -62,9 +62,9 @@ else:
                 else:
                     if p == conf.strip():
                         print('Hello'+ ' ' +profile.strip())
-                
-kv_autorization = input('Do you want to add your own encryption keys (y or n): ')
 
+# NOTE: kv refers to 'key value'                
+kv_autorization = input('Do you want to add your own encryption keys (y or n): ')
 
 if kv_autorization == 'y':
     try:
@@ -88,13 +88,15 @@ if kv_autorization == 'y':
 else:
     pass
 
+print('=======================================================================================\n')
+
 my_dict = {}
 with open("mykey.txt") as f:
     for line in f:
         key_value = line.rstrip('\n').split(":")
         if len(key_value) == 2:
             my_dict[key_value[0]]=key_value[1]
-#print(my_dict)
+
 
 encrypt = str.maketrans(my_dict)
 
@@ -104,41 +106,44 @@ with open("mykeyd.txt") as fr:
         key_value = line.rstrip('\n').split(":")
         if len(key_value) == 2:
             my_dictd[key_value[0]]=key_value[1]
-#print(my_dict)
+
 
 decrypt = str.maketrans(my_dictd)
 
 
-
+print('\ne    Encryption\nd    Decryption\ndoc  Documentation')
 mode = input('Enter "e" to encrypt and "d" to decrypt or press "doc" for Documentation: ')
 
 if mode == 'e':
-    print('Entering Encrypthion Mode...')
-    time.sleep(2)
+    print('\nEntering Encrypthion Mode...')
+    time.sleep(1.5)
     print('Encryption Mode Activated\n')
-    print('"|" to exit')
+    print('"|" to exit\n')
     while True:
         text = input('Enter Text: ')
         text_lower = text.lower()
-        print(text_lower.translate(encrypt))
         txtenc = str(text_lower.translate(encrypt))
-        pyperclip.copy(txtenc)
-        print('.................................................................\n')
+        if txtenc != ('|'.translate(encrypt)) and txtenc != ('d'.translate(encrypt)):
+            print(text_lower.translate(encrypt))
+            pyperclip.copy(txtenc)
+        elif txtenc == ('|'.translate(encrypt)) or txtenc == ('d'.translate(encrypt)):
+            print('=======================================================================================\n')
         if text == '|':
             print('The loop is now quiting...')
             break
 
         elif text =='d':
-            print('Entering Decrypthion Mode...')
-            time.sleep(2)
-            print('Decryption Mode Activated\nNOTE: YOU CAN NOT SWITCH TO ENCRYPTION MODE')
+            print('\nEntering Decrypthion Mode...')
+            time.sleep(1.5)
+            print('Decryption Mode Activated\nNOTE: YOU CAN NOT SWITCH TO ENCRYPTION MODE\n')
             while True:
-                
                 text = input('Enter Text: ')
-                print(text.translate(decrypt))
                 txtenc = str(text_lower.translate(decrypt))
-                pyperclip.copy(txtenc)
-                print('.................................................................\n')
+                if txtenc != ('|'.translate(decrypt)) and txtenc != ('e'.translate(decrypt)):
+                    print(text.translate(decrypt))
+                    pyperclip.copy(txtenc)
+                elif txtenc == ('|'.translate(encrypt)) or txtenc == ('e'.translate(encrypt)):
+                    print('=======================================================================================\n')
                 if text == '|':
                     print('The loop is now quiting...')
                     
@@ -151,31 +156,35 @@ if mode == 'e':
             
 
 elif mode == 'd':
-    print('Entering Decrypthion Mode...')
-    time.sleep(2)
+    print('\nEntering Decrypthion Mode...')
+    time.sleep(1.5)
     print('Decryption Mode Activated\n')
     while True:
         text = input('Enter Text: ')
         text_lower = text.lower()
-        print(text.translate(decrypt))
         txtenc = str(text_lower.translate(decrypt))
-        pyperclip.copy(txtenc)
-        print('.................................................................\n')
+        if txtenc != ('|'.translate(decrypt)) and txtenc != ('e'.translate(decrypt)):
+            print(text.translate(decrypt))
+            pyperclip.copy(txtenc)
+        elif txtenc == ('|'.translate(encrypt)) or txtenc == ('e'.translate(encrypt)):
+            print('=======================================================================================\n')
         if text == '|':
             print('The loop is now quiting...')
             break
 
         elif text =='e':
-            print('Entering Encrypthion Mode...')
-            time.sleep(2)
-            print('Encryption Mode Activated\nNOTE: YOU CAN NOT SWITCH TO DECRYPTION MODE')
+            print('\nEntering Encrypthion Mode...')
+            time.sleep(1.5)
+            print('Encryption Mode Activated\nNOTE: YOU CAN NOT SWITCH TO DECRYPTION MODE\n')
             while True:
                 text = input('Enter Text: ')
                 text_lower = text.lower()
-                print(text_lower.translate(encrypt))
                 txtenc = str(text_lower.translate(encrypt))
-                pyperclip.copy(txtenc)
-                print('.................................................................\n')
+                if txtenc != ('|'.translate(encrypt)) and txtenc != ('d'.translate(encrypt)):
+                    print(text_lower.translate(encrypt))
+                    pyperclip.copy(txtenc)
+                elif txtenc == ('|'.translate(encrypt)) or txtenc == ('d'.translate(encrypt)):
+                    print('=======================================================================================\n')
                 if text == '|':
                     print('The loop is now quiting...')
             
@@ -187,27 +196,17 @@ elif mode == 'd':
             
 
 elif mode == 'doc':
-    print('Alpah 0.0.1 Documentation \nAlpah is a text encryption tool and the most secured \nCreated July,20 2022 \nCreated by Red_X \nAssisted By Moxemrabs(Red)\n  ')
+    print('=======================================================================================\n')
+    print('\nAlpah 0.0.1 Documentation \nAlpah is a text encryption tool and the most secured \nCreated July,20 2022 \nCreated by Red_X \nAssisted By Moxemrabs(Red)\n  ')
     print('version 0.0.1\n')
     print('Press "e" to enter Encryption Mode \nPress "doc" for Documentations')
     print('Press "d" to enter Decryption mode \nNOTE: THE "d" OR "e" OR "doc" SOULD BE LOWERCASE')
     print('Exit by pressing "|" .\nTo exit in encryption mode you have to first switch to decryption mode\n')
     exit_doc = input('Press "|" to exit Documentation: ' )
 else:
-    print(profile.strip()+ ' '+ 'You Most Be Drunk ')
+    print('=======================================================================================\n')
+    print(profile.strip() + ' You Most Be Drunk ')
 
-time.sleep(3)
-
-
-
+time.sleep(2)
 
 
-"""
-a:1
-b:2
-c:3
-d:4
-e:5
-f:6
-
-"""
