@@ -128,7 +128,7 @@ if mode == 'e':
             try:
                 pyperclip.copy(txtenc)
             except Exception as error:
-                print('Text nas not copied to clipboard')
+                print('Text was not copied to clipboard')
                 pass
         elif txtenc == ('|'.translate(encrypt)) or txtenc == ('d'.translate(encrypt)):
             print('=======================================================================================\n')
@@ -175,7 +175,7 @@ elif mode == 'd':
             try:
                 pyperclip.copy(txtenc)
             except Exception as error:
-                print('Text nas not copied to clipboard')
+                print('Text was not copied to clipboard')
                 pass
         elif txtenc == ('|'.translate(encrypt)) or txtenc == ('e'.translate(encrypt)):
             print('=======================================================================================\n')
