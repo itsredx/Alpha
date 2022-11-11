@@ -125,7 +125,11 @@ if mode == 'e':
         txtenc = str(text_lower.translate(encrypt))
         if txtenc != ('|'.translate(encrypt)) and txtenc != ('d'.translate(encrypt)):
             print(text_lower.translate(encrypt))
-            pyperclip.copy(txtenc)
+            try:
+                pyperclip.copy(txtenc)
+            except Exception as error:
+                print('Text nas not copied to clipboard')
+                pass
         elif txtenc == ('|'.translate(encrypt)) or txtenc == ('d'.translate(encrypt)):
             print('=======================================================================================\n')
         if text == '|':
@@ -141,7 +145,10 @@ if mode == 'e':
                 txtenc = str(text_lower.translate(decrypt))
                 if txtenc != ('|'.translate(decrypt)) and txtenc != ('e'.translate(decrypt)):
                     print(text.translate(decrypt))
-                    pyperclip.copy(txtenc)
+                    try:
+                        pyperclip.copy(txtenc)
+                    except Exception as error:
+                        pass
                 elif txtenc == ('|'.translate(encrypt)) or txtenc == ('e'.translate(encrypt)):
                     print('=======================================================================================\n')
                 if text == '|':
@@ -165,7 +172,11 @@ elif mode == 'd':
         txtenc = str(text_lower.translate(decrypt))
         if txtenc != ('|'.translate(decrypt)) and txtenc != ('e'.translate(decrypt)):
             print(text.translate(decrypt))
-            pyperclip.copy(txtenc)
+            try:
+                pyperclip.copy(txtenc)
+            except Exception as error:
+                print('Text nas not copied to clipboard')
+                pass
         elif txtenc == ('|'.translate(encrypt)) or txtenc == ('e'.translate(encrypt)):
             print('=======================================================================================\n')
         if text == '|':
@@ -182,7 +193,10 @@ elif mode == 'd':
                 txtenc = str(text_lower.translate(encrypt))
                 if txtenc != ('|'.translate(encrypt)) and txtenc != ('d'.translate(encrypt)):
                     print(text_lower.translate(encrypt))
-                    pyperclip.copy(txtenc)
+                    try:
+                        pyperclip.copy(txtenc)
+                    except Exception as error:
+                        pass
                 elif txtenc == ('|'.translate(encrypt)) or txtenc == ('d'.translate(encrypt)):
                     print('=======================================================================================\n')
                 if text == '|':
