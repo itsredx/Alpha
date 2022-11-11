@@ -1,0 +1,27 @@
+a:1
+b:2
+c:3
+d:4
+e:5
+f:6
+g:7
+h:8
+i:9
+j:0
+k:a
+l:b
+m:c
+n:d
+o:e
+p:f
+q:g
+r:h
+s:i
+t:j
+u:k
+v:l
+w:m
+x:n
+y:o
+z:p
+ :q
